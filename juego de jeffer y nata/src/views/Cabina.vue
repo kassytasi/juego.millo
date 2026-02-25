@@ -1,4 +1,7 @@
 <template>
+  <div class=
+
+<template>
   <div class="neon-cabina">
 
     <!-- JUEGO -->
@@ -514,12 +517,29 @@ function reiniciarJuego() {
   sessionStorage.setItem('puntajeJugador', `$${puntajeFinal}`)
   router.push({ name: 'ranking' })
 }
+
+function claseRespuesta(i) {
+  if (!preguntaActual.value) return ""
+
+  // Si aún no respondió, no aplicar estilos
+  if (!respondido.value) return ""
+
+  // Correcta → verde
+  if (i === preguntaActual.value.correcta) {
+    return "correcta"
+  }
+
+  // Elegida pero incorrecta → roja
+  if (i === respuestaElegida.value) {
+    return "incorrecta"
+  }
+
+  return ""
+}
 </script>
 
 
 <style>
-/* NEON CABINA - VERSIÓN MEJORADA CON COLORES NEON */
-
 .neon-cabina {
   min-height: 100vh;
   background: linear-gradient(135deg, #0a0a2a 0%, #1a0033 100%);
@@ -1428,4 +1448,5 @@ function reiniciarJuego() {
 .neon-ladder::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(magenta, gold);
 }
+
 </style>
